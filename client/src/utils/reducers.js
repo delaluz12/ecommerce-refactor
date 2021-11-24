@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+// import { useReducer } from 'react';
 import {
   UPDATE_PRODUCTS,
   ADD_TO_CART,
@@ -9,13 +9,22 @@ import {
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
   TOGGLE_CART,
-} from './actions';
+} from "./actions";
 
-// TODO: To get a better understand of how a reducer works - add comments to the various actions in the reducer
-export const reducer = (state, action) => {
+// add initial state to pass in to reducer --- taken from GlobalState.js
+const initialState = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: "",
+};
+
+// reducer is fnc that takes in a state and action and returns back new state
+export default function reducers (state = initialState, action) {
   switch (action.type) {
-    // TODO: Add a comment describing the functionality of the UPDATE_PRODUCTS case
-    // Your comment here
+    
+    // returns new state object with the updated products arr. We use the action.products property and spread it's contents into the new array.
     case UPDATE_PRODUCTS:
       return {
         ...state,
@@ -86,13 +95,13 @@ export const reducer = (state, action) => {
         currentCategory: action.currentCategory,
       };
 
-    // TODO: Add a comment describing what the default case is for
-    // Your comment here
+   
+    // if none of the above cases are triggers the default action is returning the current state
     default:
       return state;
   }
-};
-
-export function useProductReducer(initialState) {
-  return useReducer(reducer, initialState);
 }
+
+// export function useProductReducer(initialState) {
+//   return useReducer(reducer, initialState);
+// }
