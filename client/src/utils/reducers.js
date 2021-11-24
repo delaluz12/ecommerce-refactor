@@ -21,7 +21,7 @@ const initialState = {
 };
 
 // reducer is fnc that takes in a state and action and returns back new state
-export default function reducers (state = initialState, action) {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     
     // returns new state object with the updated products arr. We use the action.products property and spread it's contents into the new array.
@@ -105,3 +105,5 @@ export default function reducers (state = initialState, action) {
 // export function useProductReducer(initialState) {
 //   return useReducer(reducer, initialState);
 // }
+
+export default reducer;
