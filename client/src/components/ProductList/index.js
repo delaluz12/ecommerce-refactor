@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ProductItem from '../ProductItem';
-import { useStoreContext } from '../../utils/GlobalState';
+// import { useStoreContext } from '../../utils/GlobalState';
+import { useSelector, useDispatch } from 'react-redux';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
@@ -8,7 +9,11 @@ import { idbPromise } from '../../utils/helpers';
 import spinner from '../../assets/spinner.gif';
 
 function ProductList() {
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
+  // useSelector allows us to access the redux state in the store object
+  const state = useSelector((state)=> state);
+  const dispatch = useDispatch();
+  console.log(state)
 
   const { currentCategory } = state;
 
