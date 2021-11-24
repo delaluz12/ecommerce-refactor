@@ -13,7 +13,7 @@ function ProductList() {
   // useSelector allows us to access the redux state in the store object
   const state = useSelector((state)=> state);
   const dispatch = useDispatch();
-  console.log(state)
+  // console.log(state)
 
   const { currentCategory } = state;
 
